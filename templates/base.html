@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static contact_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="yandex-verification" content="f3ce135c7e9737e1" />
+    <title>Сайт московской рок-группы Дед ПыхтО{% block title %}{% endblock title %}</title>
+    <meta name="description" content="Сайт московской рок-группы Дед ПыхтО">
+    <meta name="keywords" content="Сайт московской рок-группы Дед ПыхтО. Музыка, фото, видео">
+    <meta name="author" content="Aleksei Mashtakov">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--     main css -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--      medium -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mid.css' %}" media="screen and (max-width: 980px)">
+<!--   mobile css -->
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}" media="screen and (max-width: 600px)">
+    <link rel="icon" href="{% static 'favicon.ico'%}">
+    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png'%}">
+{% block head_addon %}{% endblock head_addon %}
+</head>
+<body>
+{#  LOAD INCLUSION TAGS FOR ALL PAGES#}
+{% get_social_links as social %}
+    <div class="container-fluid">
+<!-- Begin Navbar -->
+        {% include 'navbar.html' %}
+<!-- End navbar -->
+<!--   Begin Header -->
+        {% include 'header.html' %}
+<!--   End Header -->
+<!-- Begin Main content -->
+{% block content %}
+{% endblock %}
+
+<!-- End Main Content -->
+
+<!-- Begin Footer -->
+{% include 'footer.html' %}
+<!-- End Footer -->
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+{% block js_addon %}{% endblock js_addon %}
+</body>
+</html>

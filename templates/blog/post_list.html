@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static humanize%}
+{% block title %} - {{ post_list.first.category }}{% endblock title %}
+{% block content %}
+<div class="container-fluid col-9 news-container">
+  <div class="row justify-content-center">
+<!--      Begin Post intro-->
+      {% for post in post_list %}
+    <div class="col-4 news-list">
+
+            {% if post.category.name == 'Новости' %}
+                <h3 class="heading" style="text-align: center"><a href="{{post.get_absolute_url}}">
+                    * * *
+                </a></h3>
+            {% else %}
+                <h5 class="heading"><a href="{{post.get_absolute_url}}">
+                {{ post.title }}
+                </a></h5>
+            {% endif %}
+        <a href="{{post.get_absolute_url}}" class="block-20 rounded rightimg " style="background-image: url('{{post.main_image.url}}');"></a>
+
+        <p style="text-indent: .5em;">{{ post.intro }}</p>
+
+        <span class="heading underline"><a href="{{post.get_absolute_url}}">Подробнее</a></span></p>
+        <div class="d-flex info">
+{#            <div class="credit">{{ post.author.name }}</div>#}
+            <div class="credit">{{ post.created|date:"d M Y" }}</div>
+{#            <div class="credit">{{ post.created|naturaltime }}</div>#}
+
+            <div class="view"></div>
+            <div class="credit"> {{ post.views }}</div>
+        </div>
+    </div>
+      {% empty %}
+          <p>Sorry No posts here :-(</p>
+      {% endfor %}
+<!--        end Post intro-->
+
+</div>
+<!-- End Main Content -->
+{% endblock %}

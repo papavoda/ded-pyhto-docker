@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="container-fluid col-9">
+  <div class="row justify-content-center content">
+
+    <div class="col-3 news">
+        <h3>новости</h3>
+      <hr>
+        {#     begin NEWS#}
+        {% for post in latest_posts %}
+           <p class="date-home">{{ post.created|date:"d M Y" }}</p>
+{#            {% if post.main_image %}#}
+{#                <div  >#}
+{#                <a href="{{post.get_absolute_url}}" class="block-20 rounded"#}
+{#                   style="background-image: url({{ post.main_image.url }});"></a>#}
+{#                </div>#}
+{#            {% endif %}#}
+            <img src="{{ post.main_image.url }}" class="rightimg">
+		<p>
+        {{ post.intro }}
+        <a href="{{ post.get_absolute_url }}">Подробнее</a></p>
+<hr>
+            {% empty  %}
+                <p>No news is good news.</p>
+        {% endfor %}
+{#      end NEWS#}
+    <a href="{% url 'news_list' %}">Смотреть все новости</a>
+    <hr>
+    </div>
+
+{#      begin About_home#}
+    <div class="col-6 article">
+
+            {{ about_home.text|safe }}
+    </div>
+{#      end About home#}
+  </div>
+</div>
+{% endblock %}

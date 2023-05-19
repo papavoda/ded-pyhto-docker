@@ -1,0 +1,7 @@
+.venv
+.idea
+media
+docker-compose-prod.yml
+.env
+.directory
+package.json

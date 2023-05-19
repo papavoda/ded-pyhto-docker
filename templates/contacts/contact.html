@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid col-9 news-container">
+  <div class="row justify-content-center">
+  <div class="col-4">
+{% for contact in contacts %}
+
+    <div class="contacts">
+        <a href="mailto:{{ contact.value }}"><h3>{{ contact.value }}</h3></a>
+    </div>
+
+{% empty %}
+    NO contacts ((
+
+    {% endfor %}
+  </div>
+  </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+.header {
+  margin: 5px;
+  height: 214px;
+  width: 356px;
+background-image: url("../images/logo-mob-dp.jpg");
+box-shadow: 5px 6px 3px black;
+  background-size: cover;
+  border-radius: 1%;
+}
+
+#rollingQoute {
+margin-top: 14em;
+    font:italic 400 1.0em Helvetica;
+}
+
+.news, .article {
+margin-top: 3em;
+min-width: 360px;
+
+} 
+
+.social-nav {
+    padding-left: 0px;
+/*  padding-left: 14em;  */
+}
+
+div.col-4.news-list {
+ /*border: 1px dotted white; */
+ min-width: 356px;
+
+}
+
+.news-container {
+    margin-top: 12em;
+}
+
+.block-200 {
+  /*overflow: hidden;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+  height: 300px;
+  width: 300px;
+  /*position: relative;*/
+  /*display: block;*/
+  /*  margin-bottom: 2em;*/
+}
+
+.img-detail {
+    float: unset; /* Выравнивание по правому краю  */
+    margin: 7px 0 7px 6px; /* Отступы вокруг картинки */
+    width: 320px;
+}
+
+.img-detail-left {
+    float: unset; /* Выравнивание по правому краю  */
+    margin: 7px 0 7px 6px; /* Отступы вокруг картинки */
+    width: 320px;
+}
+.post {
+    min-width: 360px;
+}
+
+.contacts {
+    min-width:300px;
+    margin-left: -6em;
+}
+
+.news-list {
+    margin-bottom: 2em;
+}
+

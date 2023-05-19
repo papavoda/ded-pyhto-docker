@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ request.site.name }} - {{ main_title }}{% endblock %}
+{% block add_to_head %}{% endblock %}
+{% block content %}
+
+<section class="ftco-section ftco-degree-bg">
+<div class="container-fluid col-6 news-container">
+<div class="row justify-content-center">
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+
+</form>
+</div>
+</div>
+</section>
+{% endblock %}
+{% block js_addon %}
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{#    CKEDITOR.addCss('.cke_editable { background-color: black; color: white }');#}
+{% endblock %}

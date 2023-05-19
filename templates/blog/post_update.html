@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ request.site.name }} - {{ main_title }}{% endblock %}
+{% block add_to_head %}{% endblock %}
+{% block content %}
+
+<section class="ftco-section ftco-degree-bg">
+<div class="container-fluid col-6 news-container">
+<div class="row justify-content-center">
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+
+</form>
+</div>
+</div>
+</section>
+
+
+            <div class="row justify-content-start">
+        <div class="col-8 audio">
+            {% for audio in audio_internal %}
+{#                <p class="audio"><a class="f-link" href="{{  audio.track.url }}">{{ audio.name }}</a></p>#}
+{#                    <label for="{{ audio.track }}">Update audio file:</label>#}
+{#                    <input type="file" name="{{ audio.name }}" id="{{ audio.track.url }}">#}
+{#                    <input type="submit" value="Save">#}
+
+                <label for="id_audio">Аудио</label>
+                На данный момент: <a href="{{ audio.track.url }}">{{ audio.track }}</a>
+            <input type="checkbox" name="audio-clear" id="main_image-clear_id">
+            <label for="audio-clear_id">Очистить</label><br>
+            Изменить:
+            <input type="file" name="audio" accept="audio/*" id="id_audio">
+
+
+
+
+                <hr>
+                {% empty %}
+            {% endfor %}
+        </div>
+            </div>
+
+
+
+
+{% endblock %}
+{% block js_addon %}
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{#    CKEDITOR.addCss('.cke_editable { background-color: black; color: white }');#}
+{% endblock %}

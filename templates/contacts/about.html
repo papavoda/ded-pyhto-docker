@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} - {{about.first.name }}{% endblock title %}
+{% block content %}
+<!-- Begin Main content -->
+<div class="container-fluid col-9 news-container">
+  <div class="row justify-content-center">
+<!--      Begin Post intro-->
+
+    {% for post in about %}
+    <div class="col-9 post" style="margin-bottom: 2em;">
+    <h3 class="heading">{{ post.name }}</h3>
+
+    <img src="{{ post.main_image.url }}" class="{% cycle 'img-detail' 'img-detail-left' %}">
+
+{#        <p>{{ post.intro }}</p>#}
+        {{ post.text|safe}}
+    </div>
+        {% empty %}
+        Nothing to say ((
+  {% endfor %}
+<!--        {#IMAGES#}-->
+{#        <div class="row justify-content-center">#}
+{#            {% for img in images %}#}
+{#            <div class="col-3  block-200 rounded" style="background-image: url('{{ img.image.url }}');"></div>#}
+{#                {% empty %}#}
+{#            {% endfor %}#}
+{#            </div>#}
+<!--{#END IMAGES#}-->
+{#begin youtube #}
+        <div class="row justify-content-center">
+
+                {% for video in youtube %}
+                <div class="video  col-6">
+                <p>{{ video.name }}</p>
+                    {{ video.video_frame|safe }}
+                </div>
+                    {% empty %}
+                {% endfor %}
+
+        </div>
+{#    end youtube#}
+{#        <p class="info">{{ post.created }} | {{ post.author}}</p>#}
+
+<!--        end Post intro-->
+
+  </div>
+</div>
+{% endblock %}

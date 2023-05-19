@@ -1,0 +1,38 @@
+.news, .article {
+min-width: 600px;
+} 
+
+#news-img {
+ height: 520px;  
+ text-align: center; 
+}
+
+div.col-4.news-list {
+ /*border: 1px dotted white; */
+
+ min-width: 600px;
+}
+
+.block-200 {
+  /*overflow: hidden;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+  height: 400px;
+  width: 400px;
+  /*position: relative;*/
+  /*display: block;*/
+  /*  margin-bottom: 2em;*/
+}
+
+.img-detail {
+    margin: 0px 0 7px 7px; /* Отступы вокруг картинки */
+    width: 50%;
+}
+.img-detail-left {
+    margin: 0 7px 7px 0; /* Отступы вокруг картинки */
+    width: 50%;
+}
+.post {
+    min-width: 480px;
+}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} - {{ post.category.name }} - {{ post.title }}{% endblock title %}
+{% block head_addon %}<link rel="stylesheet" type="text/css" href="{% static 'grid-gallery/css/grid-gallery.min.css' %}">{% endblock head_addon %}
+{% block content %}
+<!-- Begin Main content -->
+<div class="container-fluid col-9 news-container">
+  <div class="row justify-content-center">
+<!--      Begin Post intro-->
+    <div class="col-9 post">
+    {% if post.category.name == 'Новости' %}
+        <h3 class="heading" style="text-align: center;">* * *</h3>
+    {% else %}
+        <h3 class="heading">{{ post.title }}</h3>
+    {% endif %}
+{#        {% if post.main_image %}#}
+{#            <div class="block-200 rounded" style="background-image: url('{{ post.main_image.url }}');"></div>#}
+{#        {% endif %}#}
+    {% if post.category.name != 'Фото' %}
+        <img src="{{ post.main_image.url }}" class="img-detail">
+    {% endif %}
+
+        <p >{{ post.intro }}</p>
+        {{ post.text|safe}}
+
+<!--        {#IMAGES#}-->
+{#        <div class="row justify-content-center">#}
+{#    {% if post.category.name == 'Фото' %}#}
+            <div class="gg-container gallery">
+                <div class="gg-box">
+                    {% for img in images %}
+                    <img src="{{ img.image.url }}" alt="{{ img.name }}">
+
+                    {% empty %}
+                    {% endfor %}
+                </div>
+            </div>
+{#    {% endif %}#}
+{#        </div>#}
+<!--{#END IMAGES#}-->
+
+{#    Begin Internal Music#}
+
+        <div class="row justify-content-start">
+        <div class="col-8 audio">
+            {% for audio in audio_internal %}
+                <p class="audio"><a class="f-link" href="{{  audio.track.url }}">{{ audio.name }}</a></p>
+                    {% if audio.site_play %}
+                                <audio controls="" volume="0.7">
+                    <source src="{{  audio.track.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+                </audio>
+                {% endif %}
+{#                <p><a href="{{  audio.track.url }}">{{ audio.name }}</a></p>#}
+<hr>
+                {% empty %}
+            {% endfor %}
+        </div>
+            </div>
+
+{#    End Internal Music#}
+
+
+{#begin youtube #}
+        <div class="row justify-content-center">
+
+                {% for video in youtube %}
+                <div class="video  col-6">
+                <p>{{ video.name }}</p>
+                    {{ video.video_frame|safe }}
+                </div>
+                    {% empty %}
+                {% endfor %}
+
+        </div>
+{#    end youtube#}
+                <div class="d-flex info">
+{#            <div class="credit">{{ post.author.name }}</div>#}
+            <div class="credit">{{ post.created|date:"d M Y" }}</div>
+
+            <div class="view"></div>
+            <div class="credit"> {{ post.views }}</div>
+
+        </div>
+    {#  Begin Post update#}
+  {% if user.is_authenticated %}
+      <div class="d-flex">
+    <a href='{% url 'post_update' post.pk %}'>Изменить статью</a>
+      </div>
+            <div class="d-flex">
+    <a href='{% url 'post_delete' post.pk %}'>Удалить статью</a>
+      </div>
+  {% endif %}
+{#  End  post update#}
+    </div>
+<!--        end Post intro-->
+
+  </div>
+
+</div>
+
+{% endblock %}
+<!-- End Main Content -->
+{% block js_addon %}
+    <script src="{% static 'grid-gallery/js/grid-gallery.min.js' %}"></script>
+{% endblock js_addon %}

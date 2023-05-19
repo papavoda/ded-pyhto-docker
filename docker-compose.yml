@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    container_name: ded_pyhto_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+  db:
+    image: postgres:15-alpine
+    container_name: ded_pyhto_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+volumes:
+  postgres_data:
