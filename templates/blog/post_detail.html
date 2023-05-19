@@ -55,6 +55,12 @@
 <hr>
                 {% empty %}
             {% endfor %}
+            {% for file in uploaded_files %}
+                <p>
+                <a class="" href="{{  file.file.url }}">{{ file.annotations }}</a>
+                </p>
+            {% endfor %}
+
         </div>
             </div>
 

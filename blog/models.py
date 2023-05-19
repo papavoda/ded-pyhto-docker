@@ -87,6 +87,9 @@ class Post(models.Model):
     def get_audio_internal(self):
         return self.audio_internal.order_by('tracknumber')
 
+    def get_uploaded_files(self):
+        return self.uploaded_files.all()
+
     def save(self, *args, **kwargs):  # new
         self.description = self.title
         # if not self.slug:
@@ -126,7 +129,8 @@ class AudioInternal(models.Model):
     name = models.CharField(max_length=250, default='Unknown', verbose_name='Название песни')
     post = models.ForeignKey(Post, related_name='audio_internal', on_delete=models.SET_NULL, null=True)
     tracknumber = models.PositiveSmallIntegerField(default=0, verbose_name='Порядковый номер')
-    track = models.FileField(upload_to=upload_directory, verbose_name='Аудио файл', validators=[validate_file_extension])
+    track = models.FileField(upload_to=upload_directory, verbose_name='Аудио файл',
+                             validators=[validate_file_extension])
     site_play = models.BooleanField(default=False, verbose_name='Встроенный проигрыватель', )
 
     def save(self, *args, **kwargs):
@@ -145,6 +149,18 @@ class AudioInternal(models.Model):
     def __str__(self):
         return f'{self.tracknumber} - {self.name} ({self.track})'
 
+
+class UploadFile(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Имя файла')
+    post = models.ForeignKey(Post, related_name='uploaded_files', on_delete=models.CASCADE)
+    file = models.FileField(upload_to=upload_directory, verbose_name='Альбом целиком',
+                            validators=[validate_file_extension], blank=True, null=True)
+    link = models.CharField(max_length=500, verbose_name='Ссылка на скачивание', blank=True, null=True)
+    annotations = models.CharField(max_length=255, default='Скачать весь альбом', verbose_name='Скачать целиком итп')
+
+    def __str__(self):
+        # f = self.file.split('/')[-1]
+        return f'{self.file}'
 # class Comment(models.Model):
 #     post = models.ForeignKey(Post, related_name="comment", on_delete=models.CASCADE)
 #     name = models.CharField(max_length=50)

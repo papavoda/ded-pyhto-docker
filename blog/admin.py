@@ -51,14 +51,27 @@ class AudioInternalInLine(admin.StackedInline):
     list_display = ('name', 'track')
 
 
+@admin.register(UploadFile)
+class UploadFileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'post', 'file', 'link', 'annotations')
+
+
+class UploadFilelInLine(admin.StackedInline):
+    model = UploadFile
+    max_num = 2
+    extra = 0
+    list_display = ('name', 'post', 'file', 'link', 'annotations')
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_display = ['created', 'title', 'slug', 'get_image', 'author', 'status']
     list_editable = ['status']
     readonly_fields = ("get_image",)
-    inlines = [ImageInline, VideoYoutubeInline, AudioInternalInLine, ]
-   # prepopulated_fields = {'slug': ('title',)}  # new
+    inlines = [ImageInline, VideoYoutubeInline, AudioInternalInLine, UploadFilelInLine]
+
+    # prepopulated_fields = {'slug': ('title',)}  # new
 
     def get_image(self, obj):
         try:

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'snowpenguin.django.recaptcha3',
     'mutagen',
+    'corsheaders',
 
     #  Local
     'accounts.apps.AccountsConfig',
@@ -58,6 +59,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # add CorsMiddleware above CommonMiddleWare in MIDDLEWARE
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -165,3 +168,9 @@ REST_FRAMEWORK = {
     # ]
 }
 
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["localhost:3000"]

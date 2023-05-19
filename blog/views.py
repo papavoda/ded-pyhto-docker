@@ -76,6 +76,7 @@ class PostDetailView(DetailView):
         context['images'] = self.object.get_images
         context['youtube'] = self.object.get_youtube
         context['audio_internal'] = self.object.get_audio_internal
+        context['uploaded_files'] = self.object.get_uploaded_files
         # context['comments'] = self.object.get_comments
         return context
 
