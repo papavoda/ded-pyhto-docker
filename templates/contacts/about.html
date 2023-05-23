@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-{% block title %} - {{about.first.name }}{% endblock title %}
+{% block title %}{{about.first.name }}{% endblock title %}
+<meta name="description" content="{% block description %}{{ description }}{% endblock description %}">
+<meta name="keywords" content="{% block keywords %}{{ keywords }}{% endblock keywords %}">
 {% block content %}
 <!-- Begin Main content -->
 <div class="container-fluid col-9 news-container">

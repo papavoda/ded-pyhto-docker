@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} - {{ post.category.name }} - {{ post.title }}{% endblock title %}
+{% block title %}{{ post.category.name }} - {{ post.title }}{% endblock title %}
+{% block description %}{% if post.description %}{{ post.description }}{% endif %}{% endblock description %}
+{% block keywords %}{% if post.keywords %}{{ post.keywords }}{% endif %}{% endblock keywords %}
 {% block head_addon %}<link rel="stylesheet" type="text/css" href="{% static 'grid-gallery/css/grid-gallery.min.css' %}">{% endblock head_addon %}
 {% block content %}
 <!-- Begin Main content -->

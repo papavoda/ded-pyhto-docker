@@ -7,6 +7,7 @@ Django==4.1.7
 django-autoslug==1.9.8
 django-cache-url==3.4.4
 django-ckeditor==6.5.1
+django-cors-headers==4.0.0
 django-js-asset==2.0.0
 django-recaptcha3==0.4.0
 django_debug_toolbar==3.8.1

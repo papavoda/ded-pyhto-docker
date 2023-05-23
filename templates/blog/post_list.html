@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static humanize%}
-{% block title %} - {{ post_list.first.category }}{% endblock title %}
+{% block title %}{{ post_list.first.category }}{% endblock title %}
+{% block description %}{{ post_list.first.category }}{% endblock description %}
+{% block keywords %}{{ keywords }}{% endblock keywords %}
 {% block content %}
 <div class="container-fluid col-9 news-container">
   <div class="row justify-content-center">

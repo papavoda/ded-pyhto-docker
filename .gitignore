@@ -1,5 +1,6 @@
 .venv
 .idea
+client
 media
 docker-compose-prod.yml
 .env

@@ -11,6 +11,8 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['about'] = About.objects.order_by('id')[1:]
+        context['description'] = 'Сайт московской рок-группы Дед ПыхтО'
+        context['keywords'] = 'Группа Дед ПыхтО, мызыка, концерты, история, фото, видео'
         # context['categories'] = Category.objects.all()
         # context['hero_one'] = HomeHeroSlogans.objects.all()
         # context['contact_us_form'] = ContactUsForm
@@ -28,6 +30,8 @@ class ContactLinkView(TemplateView):
         # context['categories'] = Category.objects.all()
         # context['hero_one'] = HomeHeroSlogans.objects.all()
         # context['contact_us_form'] = ContactUsForm
-        # context['title'] = 'Правильный ремонт квартир'
+        context['title'] = 'Контакты'
+        context['description'] = 'Сайт московской рок-группы Дед ПыхтО'
+        context['keywords'] = 'Группа Дед ПыхтО, мызыка, концерты, история, фото, видео'
         context['nbar'] = 'contact'
         return context

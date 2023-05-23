@@ -4,11 +4,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 
-
 from .models import Post, Category, Image, AudioInternal
 from contacts.models import About
 from .forms import PostCreateForm
-
 
 
 class HomeView(TemplateView):
@@ -22,7 +20,9 @@ class HomeView(TemplateView):
         # context['categories'] = Category.objects.
         context['about_home'] = About.objects.first()
         # context['contact_us_form'] = ContactUsForm
-        context['title'] = 'Сайт московской рок-группы Дед ПыхтО'
+        context['title'] = 'Главная'
+        context['description'] = 'Сайт московской рок-группы Дед ПыхтО'
+        context['keywords'] = 'Группа Дед ПыхтО, мызыка, концерты, история, фото, видео'
         context['nbar'] = 'home'
         return context
 
@@ -141,7 +141,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'blog/post_delete.html'
     success_url = reverse_lazy('home')
 
-
 # class MusicListAPIView(generics.ListCreateAPIView):
 #     queryset = Post.objects.select_related('category', 'author').filter(category__name='Музыка',
 #                                                                         status='published').order_by('-created')
@@ -152,5 +151,3 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 #     queryset = Post.objects.select_related('category', 'author').filter(category__name='Музыка',
 #                                                                         status='published').order_by('-created')
 #     serializer_class = PostSerializer
-
-
